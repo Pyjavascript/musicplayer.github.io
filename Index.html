@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&display=swap');
+*{
+margin:0;
+padding:0;
+font-family: 'Hurricane', cursive;
+}
+body{
+height:100vh;
+background-image: linear-gradient(130deg, #74EBD5 0%, #9FACE6 100%);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+.box{
+background:rgba(255,255,255,1);
+height:90px;
+width:340px;
+padding:0 15px;
+border-radius:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:2px 2px 1px rgba(255,255,255,.6);
+}
+.boxdet{
+height:90px;
+width:315px;
+background:rgba(255,255,255,.6);
+border-radius:15px;
+margin-top:-110px;
+z-index:-1;
+transition:.5s;
+padding:5px 5px;
+
+}
+.boxdet h2{
+width:150px;
+position:relative;
+right:-150px;
+top:-5px;
+color:transparent;
+transition:.5s;
+}
+img{
+width:100px;
+border-radius:50%;
+position:relative;
+top:-20px;
+margin:-30px 10px;
+border:solid 5px rgba(0,0,0,.1);
+}
+@keyframes rotate{
+100%{transform:rotate(360deg);}
+}
+.controllers ion-icon{
+font-size:40px;
+margin:0 13px;
+color:rgba(0,0,0,.7);
+}
+#border{
+height:5px;
+width:150px;
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+right:-150px;
+}
+#juice{
+height:5px;
+width:20%;
+border-radius:10px;
+background:orangered;
+}
+#music{
+margin:100px 0;
+}
+</style>
+<body>
+<div class="box">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrrgKEfxCPelMfy_UMFmUMRfPEn5dVgIvPRQ&usqp=CAU" id="image" >
+<div class="controllers" >
+<ion-icon name="play-back"></ion-icon>
+<ion-icon name="play" id="play" onclick="plapau()"></ion-icon>
+<ion-icon name="play-forward"></ion-icon>
+</div>
+</div>
+<div class="boxdet" id="boxdet" >
+<h2 id="name" >Love nwantiti</h2>
+<div id="border" ><div id="juice" ></div></div>
+<audio src="https://www.dropbox.com/s/mwamhv78wzxyndm/y2mate.com%20-%20CKay%20%20Love%20Nwantiti%20Acoustic%20Version.mp3?raw=1" id="music" >
+<script type="text/javascript">
+let play = document.getElementById('play');
+let musimg = document.getElementById('image');
+let boxdet = document.getElementById('boxdet');
+let juice = document.getElementById('juice');
+let msc = document.getElementById('border');
+let name = document.getElementById('name');
+let main = document.getElementById('music');
+
+var chng = false;
+const songs = [
+{
+name : "Cartoon on feat",
+logo : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST10eVVX5-EPHGn1WJn7JmgM3zjGXIZ8iduQ&usqp=CAU",
+song : "https://www.dropbox.com/s/jkcwq46jnh3iqg2/y2mate.com%20-%20cartoon%20%20on%20%20on%20feat%20daniel%20levi%20ncs%20release.mp3?raw=1"
+}
+]
+function plapau(){
+if(chng == false){
+play.name = "pause"
+musimg.style.animation = "rotate 3s infinite linear";
+boxdet.style.marginTop = "-160px";
+name.style.color = "#000"
+main.play();
+chng = true;
+}else if(chng == true){
+play.name = "play";
+musimg.style.animation = "none";
+boxdet.style.marginTop = "-110px";
+name.style.color = "transparent"
+main.pause();
+chng = false;
+}
+}
+main.addEventListener('timeupdate',function() {
+var juicepos = main.currentTime / main.duration;
+juice.style.width = juicepos * 100 + "%";
+});
+
+const loadsong = (songs) => {
+musimg.src = songs.logo;
+name.textContent = songe.name;
+main.src = songs.song;
+}
+loadsong(songs[0]);
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
